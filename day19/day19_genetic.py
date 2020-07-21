@@ -3,7 +3,7 @@ cost while ensuring that no two neighboring houses are of the same color.
 
 Given an N by K matrix where the nth row and kth column represents the cost to build the nth house with kth color,
 return the minimum cost which achieves this goal. """
-from day19.day19_matrix import create_cost_matrix, read_matrix
+from day19_matrix import create_cost_matrix, read_matrix
 
 """
 Try with genetic algorithm for fun
@@ -65,6 +65,7 @@ def fitness(matrix, element):
 
 def iteration(pop_list):
     fit_vals = [fitness(matrix, x) for x in pop_list]
+    print(fit_vals[0])
     sorted_pop_list = [x for _, x in sorted(zip(fit_vals, pop_list), key=lambda pair: pair[0])]
     new_list = sorted_pop_list[:int(fit_rate*population)]
     for _ in range(int(breed_rate*population)):
@@ -72,7 +73,6 @@ def iteration(pop_list):
         new_list.append(mutation(kid, mut_chance, k))
     while len(new_list) < population:
         new_list.append(generate_person(N, k))
-
     return new_list
 
 
