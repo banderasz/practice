@@ -10,7 +10,6 @@ A cell neighbours another cell if it is horizontally, vertically, or diagonally 
 
 from random import random
 import matplotlib.pyplot as plt
-import copy
 
 class Cell:
     def __init__(self, x: int, y: int, status: bool):
@@ -40,13 +39,13 @@ class Cell:
 
 population = []
 p = 0.5
-N = 200
+N = 500
 X = 100
 Y = 100
 
 for i in range(X):
     for j in range(Y):
-        if random() < p and ( 40 <i< 60 and 40 <j< 60):
+        if random() < p and ( 30 <i< 70 and 30 <j< 70):
             population.append(Cell(i, j, True))
         else:
             population.append(Cell(i, j, False))
